@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 
 const productRoute = require('./routes/product');
-
+const orderRoute = require('./routes/order');
 
 // // 리퀘스트 리스폰스 테스트
 // app.use((req, res) => {
@@ -21,6 +21,7 @@ const productRoute = require('./routes/product');
 
 // 라우팅
 app.use('/product', productRoute);
+app.use('/order', orderRoute);
 
 
 //포트번호 상수화
