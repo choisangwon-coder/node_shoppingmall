@@ -4,20 +4,23 @@ const express = require('express');
 // express를 app으로 상수화
 const app = express();
 
+const productRoute = require('./routes/product');
 
 
+// // 리퀘스트 리스폰스 테스트
+// app.use((req, res) => {
+//     res.json({
+//         message : "data get"
+//     });
+// });
+// //json은 데이터 구조! { 키 : 벨류 } 로 이루어진 데이터
+// // 제이슨은 현재 가장많이 사용하고 있는 데이터 구조
+// //인터넷에서 검색해 볼 것 (제이슨)
+//주석처리 단축키 : 커맨드+슬레시
 
-// 리퀘스트 리스폰스 테스트
-app.use((req, res) => {
-    res.json({
-        message : "data get"
-    });
-});
-//json은 데이터 구조! { 키 : 벨류 } 로 이루어진 데이터
-// 제이슨은 현재 가장많이 사용하고 있는 데이터 구조
-//인터넷에서 검색해 볼 것 (제이슨)
 
-
+// 라우팅
+app.use('/product', productRoute);
 
 
 //포트번호 상수화
