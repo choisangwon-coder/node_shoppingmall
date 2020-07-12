@@ -8,9 +8,26 @@ const productModel = require('../models/product');
 //'/'사용자 요청기준 잡아주겠다.
 // Product Data read
 router.get('/', (req, res) => {
-    res.json({
-        message : "Prodecut get all"
-    });
+
+    productModel
+        .find()
+        .then(docs => {
+            res.json({
+                meg: "get total product data",
+                count:docs.length,
+                products: docs
+            });
+        })
+        .catch(err => {
+            res.json({
+                msg:err.message
+            });
+        });
+        
+
+
+
+    
 });
 
 
