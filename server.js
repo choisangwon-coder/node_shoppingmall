@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 
 const productRoute = require('./routes/product');
 const orderRoute = require('./routes/order');
-const { Mongoose } = require('mongoose');
 
 // // 리퀘스트 리스폰스 테스트
 // app.use((req, res) => {
