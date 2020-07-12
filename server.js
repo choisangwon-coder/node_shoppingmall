@@ -3,6 +3,8 @@
 const express = require('express');
 // express를 app으로 상수화
 const app = express();
+const moran = require('morgan');
+const bodyParser = require("body-parser");
 
 const productRoute = require('./routes/product');
 const orderRoute = require('./routes/order');
@@ -18,6 +20,10 @@ const orderRoute = require('./routes/order');
 // //인터넷에서 검색해 볼 것 (제이슨)
 //주석처리 단축키 : 커맨드+슬레시
 
+//미드웨어 설정
+app.use(moran('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // 라우팅
 app.use('/product', productRoute);
