@@ -2,7 +2,7 @@
 // 01. 
 const express = require("express");
 const router = express.Router();
-
+const productModel = require('../models/product');
 // Product Data CRUD
 
 //'/'사용자 요청기준 잡아주겠다.
@@ -20,17 +20,36 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    const product = {
+
+    const newProduct = new productModel({
         name: req.body.productname,
-        price: req.body.productprice
-    };
-
-
-
-    res.json({
-        message : "Product Created",
-        productinfo: product
+        price: req.body.productprice,
     });
+
+    newProduct
+        .save()
+        .then(doc => {
+            res.json({
+                meg: "saved product data",
+                productinfo: doc
+            });
+        })
+        .catch(err => {
+            res.json({
+                error: err.message
+            });
+        });
+    // const product = {
+    //     name: req.body.productname,
+    //     price: req.body.productprice
+    // };
+
+
+
+    // res.json({
+    //     message : "Product Created",
+    //     productinfo: product
+    // });
 });
 
 
