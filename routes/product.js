@@ -112,12 +112,28 @@ router.patch('/', (req, res) => {
 });
 
 
-
+// 콕 하나만 삭제 하는 API 
 //Product Data Del
-router.delete('/', (req, res) => {
-    res.json({
-        message : "Product Del"
-    });
+router.delete('/:productId', (req, res) => {
+    const id = req.params.productId;
+
+    productModel
+        .findByIdAndDelete(id)
+        .then(result => {
+            res.json({
+                msg: "delete product" + id
+            });
+        })
+        .catch(err => {
+            res.json({
+                msg: err.message
+            });
+        })
+        
+
+
+
+
 });
 
 
